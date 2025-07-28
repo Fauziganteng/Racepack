@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEK DATA PESERTA BOEDAR FUN RUN 5K 2025</title>
+    <!-- Tailwind CSS CDN untuk styling yang responsif dan modern -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter untuk tampilan teks yang bersih -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Bagian CSS (Styling Tampilan) --- */
+        /* Mengatur font global dan latar belakang body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Warna latar belakang abu-abu muda */
+            display: flex;
+            justify-content: center; /* Pusatkan konten secara horizontal */
+            align-items: flex-start; /* Pusatkan konten di bagian atas secara vertikal */
+            min-height: 100vh; /* Tinggi minimum 100% dari viewport */
+            padding: 20px; /* Padding di sekitar konten */
+            box-sizing: border-box; /* Model kotak standar */
+        }
+        /* Styling untuk kontainer utama aplikasi */
+        .container {
+            background-color: #ffffff; /* Warna latar belakang putih */
+            border-radius: 1rem; /* Sudut membulat */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Bayangan */
+            padding: 2.5rem; /* Padding internal */
+            width: 100%; /* Lebar penuh */
+            max-width: 600px; /* Lebar maksimum untuk tampilan desktop */
+            margin-top: 2rem; /* Margin atas */
+        }
+        /* Styling untuk input teks */
+        input[type="text"] {
+            border: 1px solid #d1d5db; /* Warna border */
+            border-radius: 0.5rem; /* Sudut membulat */
+            padding: 0.75rem 1rem; /* Padding */
+            width: 100%; /* Lebar penuh */
+            font-size: 1rem; /* Ukuran font */
+            color: #374151; /* Warna teks */
+            outline: none; /* Hilangkan outline default saat fokus */
+            transition: border-color 0.2s; /* Transisi halus untuk border */
+        }
+        input[type="text"]:focus {
+            border-color: #2563eb; /* Warna border saat fokus */
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); /* Bayangan saat fokus */
+        }
+        /* Styling untuk tombol */
+        button {
+            background-color: #2563eb; /* Warna latar belakang biru */
+            color: #ffffff; /* Warna teks putih */
+            border-radius: 0.5rem; /* Sudut membulat */
+            padding: 0.75rem 1.5rem; /* Padding */
+            font-weight: 600; /* Tebal teks */
+            transition: background-color 0.2s, transform 0.1s; /* Transisi halus */
+            cursor: pointer; /* Kursor pointer saat hover */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Bayangan */
+        }
+        button:hover {
+            background-color: #1d4ed8; /* Warna saat hover */
+            transform: translateY(-1px); /* Efek sedikit naik saat hover */
+        }
+        button:active {
+            transform: translateY(0); /* Efek kembali saat diklik */
+            box-shadow: none; /* Hilangkan bayangan saat diklik */
+        }
+        /* Styling untuk setiap item data yang ditampilkan */
+        .data-item {
+            display: flex;
+            justify-content: space-between; /* Spasi antara label dan nilai */
+            padding: 0.5rem 0; /* Padding vertikal */
+            border-bottom: 1px dashed #e5e7eb; /* Garis putus-putus di bawah */
+        }
+        .data-item:last-child {
+            border-bottom: none; /* Hapus garis bawah pada item terakhir */
+        }
+        .data-label {
+            font-weight: 500; /* Tebal sedang */
+            color: #4b5563; /* Warna teks abu-abu */
+        }
+        .data-value {
+            color: #1f2937; /* Warna teks gelap */
+            text-align: right; /* Rata kanan untuk nilai */
+        }
+        /* Styling untuk kotak pesan (info, error, success) */
+        .message {
+            padding: 1rem; /* Padding */
+            border-radius: 0.5rem; /* Sudut membulat */
+            margin-top: 1.5rem; /* Margin atas */
+            text-align: center; /* Teks di tengah */
+            font-weight: 500; /* Tebal sedang */
+        }
+        .message.error {
+            background-color: #fee2e2; /* Latar belakang merah muda */
+            color: #dc2626; /* Teks merah */
+            border: 1px solid #fca5a5; /* Border merah */
+        }
+        .message.info {
+            background-color: #dbeafe; /* Latar belakang biru muda */
+            color: #2563eb; /* Teks biru */
+            border: 1px solid #93c5fd; /* Border biru */
+        }
+        .message.success {
+            background-color: #d1fae5; /* Latar belakang hijau muda */
+            color: #065f46; /* Teks hijau */
+            border: 1px solid #a7f3d0; /* Border hijau */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container text-center">
+        <!-- LOGO -->
+        <!-- Pastikan Anda memiliki folder 'images' di dalam folder 'frontend' dan 'logo.png' di dalamnya. -->
+        <!-- Untuk tampilan web, path relatif ini bekerja. -->
+        <img src="/images/logo.png" alt="Logo Boedar" width="80" height="80" class="mx-auto mb-4">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">
+            CEK DATA PESERTA BOEDAR FUNRUN 5K 2025
+        </h1>
+
+        <div class="mb-6 text-left">
+            <label for="searchInput" class="block text-gray-700 text-sm font-medium mb-2">
+                Masukkan ID Pembayaran atau nama:
+            </label>
+            <input type="text" id="searchInput" placeholder="Contoh: BFR5K-21052025-0001 / Budi Santoso" class="focus:ring-blue-500 focus:border-blue-500 w-full px-4 py-2 border border-gray-300 rounded-md">
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <button id="searchButton" class="w-full sm:w-auto flex-grow bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Cari Data</button>
+            <button id="downloadPdfButton" class="w-full sm:w-auto flex-grow bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded" style="display:none;">Unduh PDF</button>
+        </div>
+
+        <div id="resultContainer" class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200" style="display:none;">
+            <!-- Data peserta akan ditampilkan di sini -->
+        </div>
+
+        <div id="messageBox" class="message info" style="display:block;">
+            <p>Silakan masukkan ID Pendaftar atau Nama untuk mencari data.</p>
+        </div>
+    </div>
+</body>
+
+
+    <!-- jsPDF CDN untuk membuat PDF di sisi klien -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        /* --- Bagian JavaScript (Logika Aplikasi) --- */
+
+        // Mendapatkan referensi ke elemen-elemen DOM
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const resultContainer = document.getElementById('resultContainer');
+        const downloadPdfButton = document.getElementById('downloadPdfButton');
+        const messageBox = document.getElementById('messageBox');
+
+        let currentParticipantData = null; // Variabel untuk menyimpan data peserta yang sedang ditampilkan
+
+        // Fungsi untuk menampilkan pesan di messageBox
+        function showMessage(msg, type = 'info') {
+            messageBox.textContent = msg;
+            messageBox.className = `message ${type}`; // Mengatur kelas CSS untuk styling (info, error, success)
+            messageBox.style.display = 'block'; // Tampilkan kotak pesan
+        }
+
+        // Fungsi untuk menyembunyikan pesan di messageBox
+        function hideMessage() {
+            messageBox.style.display = 'none';
+        }
+
+        // Event listener untuk tombol 'Cari Data'
+        searchButton.addEventListener('click', async () => {
+            const searchTerm = searchInput.value.trim(); // Ambil nilai input dan hapus spasi
+            resultContainer.style.display = 'none'; // Sembunyikan kontainer hasil sebelumnya
+            downloadPdfButton.style.display = 'none'; // Sembunyikan tombol PDF
+            currentParticipantData = null; // Reset data peserta yang sedang ditampilkan
+
+            if (!searchTerm) {
+                showMessage('Mohon masukkan ID Pendaftar atau Nama.', 'info');
+                return;
+            }
+
+            showMessage('Mencari data...', 'info'); // Tampilkan pesan loading
+            searchButton.disabled = true; // Nonaktifkan tombol pencarian selama proses
+
+            try {
+                // URL API backend Flask Anda. Pastikan server Python Anda berjalan di http://127.0.0.1:5000
+                const apiUrl = `http://127.0.0.1:5000/api/peserta?query=${encodeURIComponent(searchTerm)}`;
+                console.log(`Mencoba mengambil data dari: ${apiUrl}`); // Log URL yang diakses untuk debugging
+                
+                // Lakukan permintaan fetch ke backend
+                const response = await fetch(apiUrl);
+                
+                if (response.ok) { // Jika respons HTTP adalah 200-299 (berhasil)
+                    const data = await response.json(); // Parse respons JSON
+                    if (data && data.id_pendaftar) { // Periksa apakah data peserta ditemukan
+                        currentParticipantData = data; // Simpan data yang ditemukan
+                        displayParticipantData(data); // Tampilkan data di UI
+                        resultContainer.style.display = 'block'; // Tampilkan kontainer hasil
+                        downloadPdfButton.style.display = 'block'; // Tampilkan tombol Unduh PDF
+                        showMessage('Data ditemukan!', 'success'); // Pesan sukses
+                    } else {
+                        // Jika respons OK tapi tidak ada data yang valid (misal: {} atau null)
+                        showMessage('Data tidak ditemukan. Pastikan ID Pendaftar atau Nama sudah benar.', 'error');
+                    }
+                } else if (response.status === 404) {
+                    // Jika status 404 Not Found
+                    showMessage('Data tidak ditemukan. Pastikan ID Pendaftar atau Nama sudah benar.', 'error');
+                } else {
+                    // Tangani error lain dari server (misal: 500 Internal Server Error)
+                    const errorText = await response.text(); // Coba ambil teks error dari respons
+                    showMessage(`Terjadi kesalahan server: ${response.status} - ${errorText.substring(0, 100)}...`, 'error');
+                    console.error('Server error:', response.status, errorText);
+                }
+            } catch (error) {
+                // Tangani error jaringan atau error saat fetch
+                console.error('Error fetching data:', error);
+                showMessage(`Gagal terhubung ke server backend (${error.message}). Pastikan server Python Anda berjalan di http://127.0.0.1:5000.`, 'error');
+            } finally {
+                searchButton.disabled = false; // Aktifkan kembali tombol pencarian
+                setTimeout(hideMessage, 5000); // Sembunyikan pesan setelah 5 detik
+            }
+        });
+
+        // Fungsi untuk menampilkan data peserta di kontainer hasil UI
+        function displayParticipantData(data) {
+            resultContainer.innerHTML = `
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">Data Racepack Peserta</h2>
+                <div class="data-item">
+                    <span class="data-label">ID Pendaftar:</span>
+                    <span class="data-value">${data.id_pendaftar}</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Nama:</span>
+                    <span class="data-value">${data.nama}</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Jenis Kelamin:</span>
+                    <span class="data-value">${data.jenis_kelamin}</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Ukuran Jersey:</span>
+                    <span class="data-value">${data.ukuran_jersey}</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Nomor BIB:</span>
+                    <span class="data-value">${data.nomor_bib}</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Kategori:</span>
+                    <span class="data-value">${data.kategori}</span>
+                </div>
+            `;
+        }
+
+        // Event listener untuk tombol 'Unduh PDF'
+        downloadPdfButton.addEventListener('click', async () => {
+            if (!currentParticipantData) {
+                showMessage('Tidak ada data peserta untuk diunduh.', 'error');
+                return;
+            }
+
+            showMessage('Mempersiapkan PDF...', 'info'); // Pesan loading
+            downloadPdfButton.disabled = true; // Nonaktifkan tombol saat proses
+
+            try {
+                const { jsPDF } = window.jspdf; // Dapatkan objek jsPDF
+                const doc = new jsPDF(); // Buat dokumen PDF baru
+
+                const pageWidth = doc.internal.pageSize.width; // Lebar halaman PDF
+                // Fungsi bantu untuk menempatkan teks di kanan halaman (tidak digunakan di kop surat saat ini)
+                const rightAlignText = (text, y, fontSize = 12, fontStyle = 'normal') => {
+                    doc.setFontSize(fontSize);
+                    doc.setFont(doc.getFont().fontName, fontStyle);
+                    doc.text(text, pageWidth - 20, y, { align: 'right' });
+                };
+
+                let currentY = 20; // Posisi Y awal untuk konten PDF
+
+                const logoUrl = '/images/logo.png'; // Ganti dengan URL logo Anda yang sebenarnya
+                const logoWidth = 25; // Lebar logo di PDF
+                const logoHeight = 30; // Tinggi logo di PDF
+                const logoX = 20; // Posisi X logo (20 unit dari kiri)
+                const logoY = currentY - 5; // Posisi Y logo (sedikit di atas teks kop surat awal)
+
+                let logoAdded = false; // Flag untuk melacak apakah logo berhasil ditambahkan
+
+                // Memuat gambar logo secara asinkron
+                try {
+                    const img = new Image();
+                    img.src = logoUrl;
+                    await new Promise((resolve, reject) => {
+                        img.onload = () => {
+                            console.log("Gambar logo berhasil dimuat.");
+                            // Tambahkan gambar ke PDF. 'JPEG' adalah format yang direkomendasikan untuk URL.
+                            // Jika gambar Anda PNG, ganti 'JPEG' dengan 'PNG'.
+                            doc.addImage(img, 'JPEG', logoX, logoY, logoWidth, logoHeight);
+                            logoAdded = true;
+                            resolve(); // Resolusi promise jika gambar berhasil dimuat
+                        };
+                        img.onerror = (e) => {
+                            console.error("Gagal memuat gambar logo. Error:", e);
+                            showMessage('Gagal memuat logo. PDF akan dibuat tanpa logo.', 'error');
+                            resolve(); // Tetap resolusi agar proses PDF berlanjut tanpa logo
+                        };
+                    });
+                } catch (imgLoadError) {
+                    console.error("Error saat memuat gambar logo (catch block):", imgLoadError);
+                    showMessage('Terjadi kesalahan tak terduga saat memuat logo. PDF akan dibuat tanpa logo.', 'error');
+                }
+
+                // Menentukan posisi Y untuk teks kop surat, disesuaikan agar di samping logo
+                let headerTextY = logoY;
+                if (logoAdded) {
+                    // Jika logo ditambahkan, teks sejajar dengan tengah logo
+                    // 16 adalah ukuran font utama kop surat, dibagi 2 untuk mendapatkan setengah tinggi teks
+                    headerTextY = logoY + (logoHeight / 2) - (16 / 2); 
+                } else {
+                    // Jika tidak ada logo, teks dimulai dari posisi Y awal
+                    headerTextY = currentY; 
+                }
+
+                // --- Teks Kop Surat ---
+                doc.setFontSize(16);
+                doc.setFont(doc.getFont().fontName, 'bold');
+                // Posisi X teks kop surat: logoX + logoWidth + jarak (10 unit)
+                const headerTextX = logoX + logoWidth + 10; 
+                if (logoAdded) {
+                    doc.text("BOEDAR FUN RUN", headerTextX, headerTextY);
+                    headerTextY += 6; // Spasi antar baris
+                    doc.text("KOTA CILEGON TAHUN 2025", headerTextX, headerTextY);
+                } else {
+                    doc.text("BOEDAR FUN RUN", pageWidth / 2, headerTextY, { align: 'center' });
+                    headerTextY += 6;
+                    doc.text("KOTA CILEGON TAHUN 2025", pageWidth / 2, headerTextY, { align: 'center' });
+                }
+                headerTextY += 5; // Spasi antar baris teks kop surat
+
+                doc.setFontSize(10);
+                doc.setFont(doc.getFont().fontName, 'normal');
+                if (logoAdded) {
+                    doc.text("Jl. Ir. Sutami link. Delingseng RT/RW 02/01", headerTextX, headerTextY);
+                    headerTextY += 5;
+                    doc.text("Kec. Citangkil Kota Cilegon-Banten.| HP. 085691894892", headerTextX, headerTextY);
+                } else {
+                    doc.text("Jl. Ir. Sutami link. Delingseng RT/RW 02/01", pageWidth / 2, headerTextY, { align: 'center' });
+                    headerTextY += 5;
+                    doc.text("Kec. Citangkil Kota Cilegon-Banten.| HP. 085691894892", pageWidth / 2, headerTextY, { align: 'center' });
+                }
+
+                // Sesuaikan currentY agar berada di bawah semua elemen kop surat
+                currentY = Math.max(currentY + logoHeight + 5, headerTextY + 8);
+                currentY += 5; // Spasi tambahan sebelum garis pemisah
+
+                // Garis pemisah kop surat
+                doc.setLineWidth(0.8); // Ketebalan garis
+                doc.line(20, currentY, pageWidth - 20, currentY); // Gambar garis horizontal
+                currentY += 10; // Spasi setelah garis
+
+                // --- Judul Dokumen Utama ---
+                doc.setFontSize(18);
+                doc.setFont(doc.getFont().fontName, 'bold');
+                doc.text("DATA RACEPACK PESERTA", pageWidth / 2, currentY, { align: 'center' });
+                currentY += 10; // Spasi setelah judul
+
+                // Garis pemisah setelah judul
+                doc.setLineWidth(0.5);
+                doc.line(20, currentY, pageWidth - 20, currentY);
+                currentY += 10; // Spasi setelah garis
+
+                doc.setFontSize(12);
+                doc.setFont(doc.getFont().fontName, 'normal'); // Reset font style ke normal
+                let yOffset = currentY; // Posisi Y awal untuk teks data peserta
+
+                // Fungsi bantu untuk menambahkan baris data
+                // PERUBAHAN: Mengonversi nilai ke string secara eksplisit untuk mencegah error PDF
+                const addDataRow = (label, value) => {
+                    const displayValue = (value !== null && value !== undefined) ? String(value) : ''; // Pastikan nilai adalah string
+                    doc.text(label + ":", 30, yOffset); // Label di kiri
+                    doc.text(displayValue, pageWidth - 30, yOffset, { align: 'right' }); // Nilai di kanan
+                    yOffset += 10; // Pindah ke baris berikutnya
+                };
+
+                // Tambahkan setiap detail peserta, termasuk kategori baru
+                addDataRow("ID Pendaftar", currentParticipantData.id_pendaftar);
+                addDataRow("Nama", currentParticipantData.nama);
+                addDataRow("Jenis Kelamin", currentParticipantData.jenis_kelamin);
+                addDataRow("Ukuran Jersey", currentParticipantData.ukuran_jersey);
+                addDataRow("Nomor BIB", currentParticipantData.nomor_bib);
+                addDataRow("Kategori", currentParticipantData.kategori); // PENAMBAHAN: Kategori
+
+                // --- Footer Dokumen ---
+                doc.setFontSize(10);
+                doc.setTextColor(100); // Warna abu-abu
+                doc.text("Generated by boedar funrun 5k 2025", pageWidth / 2, doc.internal.pageSize.height - 15, { align: 'center' });
+
+                // Menyimpan file PDF dengan nama yang relevan
+                doc.save(`Racepack_${currentParticipantData.id_pendaftar}.pdf`);
+                showMessage('PDF berhasil diunduh!', 'success'); // Pesan sukses di UI
+            } catch (error) {
+                console.error('Error saat membuat PDF:', error); // Log error ke konsol browser
+                showMessage(`Gagal mengunduh PDF: ${error.message}. Coba lagi.`, 'error'); // Pesan error di UI
+            } finally {
+                downloadPdfButton.disabled = false; // Aktifkan kembali tombol
+                setTimeout(hideMessage, 5000); // Sembunyikan pesan setelah 5 detik
+            }
+        });
+
+        // Event listener untuk tombol Enter pada input pencarian
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                searchButton.click(); // Memicu klik tombol pencarian
+            }
+        });
+    </script>
