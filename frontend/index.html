@@ -123,7 +123,7 @@
       searchButton.disabled = true;
 
       try {
-        const apiUrl = `https://racepack-fw39930pt-fauzigantengs-projects.vercel.app/api/peserta?query=${encodeURIComponent(searchTerm)}`;
+        const apiUrl = `https://cekdataboedarfunrun.vercel.app/api/peserta?query=${encodeURIComponent(searchTerm)}`;
         const response = await fetch(apiUrl);
         if (response.ok) {
           const data = await response.json();
