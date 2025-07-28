@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+flask
+flask-cors
+gunicorn
+pandas
+openpyxl
+=======
+flask
+flask-cors
+pandas
+openpyxl
+>>>>>>> 0849f76d935397053b60b0fcc4eb796a6ef8452a
